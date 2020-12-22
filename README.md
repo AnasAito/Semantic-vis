@@ -1,2 +1,2 @@
 # Shemantic-vis
-Created with CodeSandbox
+a js graph for Shemantic papers citations and references 
