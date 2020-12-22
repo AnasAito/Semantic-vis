@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
-import { ForceGraph3D } from "react-force-graph";
+
+import ExpandableGraph from "./comps/expandable";
 // Random tree
 
 const gData = {
@@ -30,19 +31,22 @@ const gData = {
     }
   ]
 };
-
+const genRandomTree = (N = 300, reverse = false) => {
+  return {
+    nodes: [...Array(N).keys()].map((i) => ({ id: i })),
+    links: [...Array(N).keys()]
+      .filter((id) => id)
+      .map((id) => ({
+        [reverse ? "target" : "source"]: id,
+        [reverse ? "source" : "target"]: Math.round(Math.random() * (id - 1))
+      }))
+  };
+};
 export default function App() {
   console.log(gData);
   return (
     <div className="App">
-      <ForceGraph3D
-        graphData={gData}
-        nodeLabel={"id"}
-        linkDirectionalArrowLength={3.5}
-        linkDirectionalArrowRelPos={1}
-        linkCurvature={0.25}
-        backgroundColor={"#000011"}
-      />
+      <ExpandableGraph graphData={genRandomTree(20, true)} />
     </div>
   );
 }
