@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { ForceGraph3D } from "react-force-graph";
+import { get_shemantic_paper } from "../api";
 export default function ExpandableGraph({ graphData }) {
   const [prunedTree, setPrunedTree] = useState(graphData);
 
@@ -15,7 +16,7 @@ export default function ExpandableGraph({ graphData }) {
 
     setPrunedTree({ nodes: Nodes, links: Links });
   }, []);
-
+  console.log(get_shemantic_paper("paper_id_test"));
   return (
     <ForceGraph3D
       graphData={prunedTree}
