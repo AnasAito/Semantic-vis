@@ -13,12 +13,12 @@ export const process_shemantic_data = (data, tresh_hold) => {
   const nodes_cit = citations
     .filter((cit, index) => index <= tresh_hold)
     .map((cit) => {
-      return { id: cit["paperId"], group: 2 };
+      return { id: cit["paperId"], group: "cit" };
     });
   const nodes_ref = references
     .filter((ref, index) => index <= tresh_hold)
     .map((ref) => {
-      return { id: ref["paperId"], group: 1 };
+      return { id: ref["paperId"], group: "ref" };
     });
   const nodes = nodes_cit.concat(nodes_ref);
 

@@ -12,10 +12,14 @@ export default function ExpandableGraph({ graphData, root_id }) {
     const nodes = process_shemantic_data(data, 2);
     // todo  fix duplicate
     nodes.map((node_) => {
+      const newLink =
+        node_.group === "cit"
+          ? { source: node.id, target: node_.id }
+          : { source: node_.id, target: node.id };
       setPrunedTree(({ nodes, links }) => {
         return {
           nodes: [...nodes, { id: node_.id }],
-          links: [...links, { source: node.id, target: node_.id }]
+          links: [...links, newLink]
         };
       });
     });
@@ -24,9 +28,11 @@ export default function ExpandableGraph({ graphData, root_id }) {
   return (
     <ForceGraph3D
       graphData={prunedTree}
+      linkDirectionalArrowLength={3.5}
+      linkDirectionalArrowRelPos={1}
+      linkCurvature={0.25}
       //enableNodeDrag={false}
-      // linkDirectionalParticles={2}
-
+      linkDirectionalParticles={2}
       onNodeClick={handleNodeClick}
     />
   );
