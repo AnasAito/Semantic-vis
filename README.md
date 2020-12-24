@@ -12,5 +12,6 @@ https://paper-graph.vercel.app/
 
 ## TO DO
 
+- onclcick bring node per node (update state after each citation + infl query)
 - when on click on node udate its infl (val)
 - deal with duplicate bug

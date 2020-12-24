@@ -7,7 +7,7 @@ export const get_shemantic_paper = async (paper_id) => {
   const { data } = await axios.get(final_url);
   return data;
 };
-const get_shemantic_paper_infl = async (paper_id) => {
+export const get_shemantic_paper_infl = async (paper_id) => {
   // console.log(paper_id);
   const b_url = "https://api.semanticscholar.org/v1/paper/";
   const final_url = b_url + paper_id;
